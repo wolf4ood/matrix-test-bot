@@ -42,14 +42,14 @@ impl MyEventHandler {
             };
 
             match msg_body.to_ascii_lowercase().as_str() {
-                "ping" => {}
-                _ => {
+                "ping" => {
                     let content = AnyMessageEventContent::RoomMessage(
                         MessageEventContent::text_plain("pong"),
                     );
 
                     self.client.room_send(room.room_id(), content, None).await?;
                 }
+                _ => {}
             }
         }
 
