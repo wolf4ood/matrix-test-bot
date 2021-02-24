@@ -1,0 +1,13 @@
+[credentials]
+username= "<username>"
+password= "<password>"
+device_id= "<device_id>"
+#access_token="<access_token>"
+
+[server]
+url = "<url>"
+
+
+[sync]
+interval= 30
+
