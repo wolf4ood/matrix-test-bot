@@ -2,10 +2,7 @@ use std::{convert::TryFrom, time::Duration};
 
 use crate::{cfg::BotConfig, handler::MyEventHandler};
 use anyhow::Result;
-use matrix_sdk::{
-    deserialized_responses::SyncResponse, identifiers::UserId, Client, ClientConfig, LoopCtrl,
-    Session, SyncSettings,
-};
+use matrix_sdk::{identifiers::UserId, Client, ClientConfig, Session, SyncSettings};
 use url::Url;
 
 use tracing::{debug, error, info};
@@ -74,12 +71,7 @@ pub async fn run(config: BotConfig) -> Result<()> {
         )))
         .await;
 
-    client.sync_with_callback(sync_settings, callback).await;
+    client.sync(sync_settings).await;
 
     Ok(())
-}
-
-async fn callback(response: SyncResponse) -> LoopCtrl {
-    info!("{:?}", response);
-    LoopCtrl::Continue
 }
