@@ -11,3 +11,6 @@ url = "<url>"
 [sync]
 interval= 30
 
+
+[storage]
+path = "<storage_path>"

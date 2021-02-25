@@ -8,7 +8,7 @@ use url::Url;
 use tracing::{debug, error, info};
 
 pub async fn run(config: BotConfig) -> Result<()> {
-    let client_config = ClientConfig::default();
+    let client_config = ClientConfig::default().store_path(config.storage.path.as_str());
 
     let homeserver_url = Url::parse(config.server.url.as_str())?;
 

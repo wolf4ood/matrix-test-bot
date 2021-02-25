@@ -26,8 +26,12 @@ pub struct Sync {
 pub struct BotConfig {
     pub credentials: Credentials,
     pub server: HomeServer,
-
     pub sync: Sync,
+    pub storage: Storage,
+}
+#[derive(Deserialize, Clone)]
+pub struct Storage {
+    pub path: String,
 }
 
 impl TryFrom<PathBuf> for BotConfig {
